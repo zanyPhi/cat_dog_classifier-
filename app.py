@@ -16,6 +16,8 @@ def classify_image(image):
     img_array = tf.keras.preprocessing.image.img_to_array(img)
     # Expand dimensions to match input target shape
     img_array = np.expand_dims(img_array, axis=0)
+    # Create the model object
+    model = load_model("softmax_2units")
     # Make prediction
     pred = model.predict(x=img_array)
     # Get the predicted class
@@ -27,16 +29,14 @@ def classify_image(image):
         return "Dog"
     
 examples = ['cat.4.jpg', 'cat.64.jpg', 'dog.4.jpg', 'dog.45.jpg']
+description = "Upload a picture. Click submit"
 
 interface = gr.Interface(fn=classify_image,
                           inputs=gr.Image(shape=(200, 200)),
                           outputs=gr.Text(),
                           examples=examples,
-                          live=True,
+                          description=description,
                           flagging_options=['Correct', 'Wrong'])
 
 
-
-if __name__ == "__main__":
-    model = load_model("softmax_2units")
-    interface.launch(debug=True)
+interface.launch(debug=True)

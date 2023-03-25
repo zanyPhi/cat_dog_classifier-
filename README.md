@@ -3,4 +3,4 @@ An cat or dog image classifier model using python packages tensorflow (for deep 
 
 
 
-This model will be hosted on the HuggingFace spaces
+The model will be hosted on the HuggingFace spaces: https://huggingface.co/spaces/zanyPhi/cats_vs_dogs
